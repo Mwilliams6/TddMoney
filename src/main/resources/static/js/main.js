@@ -23,7 +23,7 @@ function convertInput()
             $('.dollarValue').val('$'+data[0].toFixed(2));
             $('.euroValue').val('€'+data[1].toFixed(2));
             $('.poundValue').val('£'+data[2].toFixed(2));
-
+            
             console.log("SUCCESS : ", data);
         },
         error: function (err) {

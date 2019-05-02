@@ -1,17 +1,23 @@
 package com.revolv3r.tddmoneyexercise.domain;
 
 public enum Currency {
-  DOLLAR("Dollars"),
-  POUND("Pounds"),
-  EURO("Euros");
+  DOLLAR("Dollars", "USD"),
+  POUND("Pounds", "GBP"),
+  EURO("Euros", "EUR");
 
   private String mFriendlyName;
+  private String mCurrencyCode;
 
-  private Currency(String aFriendlyName) {
-    this.mFriendlyName = aFriendlyName;
+  Currency(String aFriendlyName, String aCurrencyCode) {
+    mFriendlyName = aFriendlyName;
+    mCurrencyCode = aCurrencyCode;
   }
 
   public String getFriendlyName() {
-    return this.mFriendlyName;
+    return mFriendlyName;
   }
+  public String getCurrencyCode() {
+    return mCurrencyCode;
+  }
+
 }

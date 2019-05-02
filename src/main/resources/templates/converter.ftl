@@ -9,6 +9,14 @@
 
 </head>
 <body>
+    <div id="currencyTable">
+        <h4>${baseCurrency} conversion rate</h4>
+        <p>as of ${dateOfRetrieval}</p>
+        <#list quotes as key, value>
+            <p>${key} - ${value}</p>
+        </#list>
+    </div>
+
     <div id="container">
         <h2>Currency Converter</h2>
 
@@ -58,6 +66,7 @@
             </table>
         </div>
     </div>
+
 
 
 

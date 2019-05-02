@@ -1,10 +1,6 @@
 package com.revolv3r.tddmoneyexercise;
 
-import com.revolv3r.tddmoneyexercise.domain.Currency;
-import com.revolv3r.tddmoneyexercise.domain.Dollar;
-import com.revolv3r.tddmoneyexercise.domain.Euro;
-import com.revolv3r.tddmoneyexercise.domain.MonetaryUnit;
-import com.revolv3r.tddmoneyexercise.domain.Pound;
+import com.revolv3r.tddmoneyexercise.domain.*;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -12,6 +8,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
+
+import java.util.Map;
 
 @Controller
 public class CurrencyController {
@@ -22,12 +20,19 @@ public class CurrencyController {
 
   @RequestMapping({"/"})
   public String convert(Model model) {
-    RestTemplate restTemplate = new RestTemplate();
-    CurrencyIO currencyQuotes = restTemplate.getForObject("http://gturnquist-quoters.cfapps.io/api/random", CurrencyIO.class);
-
-    initRates();
+    getQuotes(model,"USD");
 
     return "converter";
+  }
+
+  private void getQuotes(Model aModel, String aBaseCurrency)
+  {
+    RestTemplate restTemplate = new RestTemplate();
+    CurrencyIO currencyQuotes = restTemplate.getForObject("https://api.exchangeratesapi.io/latest?base="+aBaseCurrency, CurrencyIO.class);
+
+    aModel.addAttribute("quotes", currencyQuotes.getRates());
+    aModel.addAttribute("baseCurrency", currencyQuotes.getBase());
+    aModel.addAttribute("dateOfRetrieval", currencyQuotes.getDate());
   }
 
   @RequestMapping(
@@ -35,7 +40,7 @@ public class CurrencyController {
     method = {RequestMethod.GET}
   )
   @ResponseBody
-  public double[] convert(@RequestParam String input, @RequestParam String unit) {
+  public double[] convert(Model aModel, @RequestParam String input, @RequestParam String unit) {
     double[] results = new double[3];
     MonetaryUnit monetaryUnit = null;
     double doubleValue = Double.valueOf(input);
@@ -54,6 +59,9 @@ public class CurrencyController {
     results[0] = ((MonetaryUnit)monetaryUnit).convertToCurrency(Currency.DOLLAR);
     results[1] = ((MonetaryUnit)monetaryUnit).convertToCurrency(Currency.EURO);
     results[2] = ((MonetaryUnit)monetaryUnit).convertToCurrency(Currency.POUND);
+
+    getQuotes(aModel, currUnit.getCurrencyCode());
+
     return results;
   }
 

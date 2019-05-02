@@ -1,10 +1,17 @@
 body{
     font-family: monospace;
     background-color: #eee;
+    min-width: 850px;
 }
 
-#container
-{
+#currencyTable {
+    line-height: 0px;
+    float: right;
+    width: 300px;
+    margin-left: 10px;
+
+}
+#container {
     width: 540px;
     margin: 0 auto;
 }
@@ -18,17 +25,14 @@ input, select {
     font-size: 2.3em;
 }
 
-#table-data
-{
+#table-data {
     border: 2px #fff solid;
     border-radius: 15px;
     padding: 20px;
 }
-.convert
-{
+.convert {
     background-color: #bbb;
 }
-.adding
-{
+.adding {
     background-color: #bbff88;
 }
