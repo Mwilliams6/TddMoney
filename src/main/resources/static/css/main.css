@@ -1,0 +1,22 @@
+body{
+    font-family: monospace;
+}
+
+#container
+{
+    width: 540px;
+    margin: 0 auto;
+}
+
+#container h2 {
+    text-align: center;
+    font-size: 2.3em;
+}
+
+#table-data
+{
+    border: 2px #ccc solid;
+    background-color: #bbb;
+    border-radius: 15px;
+    padding: 20px;
+}
