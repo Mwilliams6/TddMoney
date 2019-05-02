@@ -1,44 +1,40 @@
+//
+// Source code recreated from a .class file by IntelliJ IDEA
+// (powered by Fernflower decompiler)
+//
+
 package com.revolv3r.tddmoneyexercise.domain;
 
-public class Euro extends MonetaryUnit
-{
-  public Euro(double aInitVal)
-  {
+public class Euro extends MonetaryUnit {
+  public Euro(double aInitVal) {
     super(aInitVal);
   }
 
-  @Override
   public Currency getUnit() {
     return Currency.POUND;
   }
 
-  @Override
   public double getDollarRate() {
-    return 0.90;
+    return 0.9D;
   }
 
-  @Override
   public double getEuroRate() {
-    return 1;
+    return 1.0D;
   }
 
-  @Override
   public double getPoundRate() {
-    return 1.158138176;
+    return 1.158138176D;
   }
 
-  @Override
   public double getConvertToDollarRate() {
-    return 1.115255;
+    return 1.115255D;
   }
 
-  @Override
   public double getConvertToEuroRate() {
-    return 1;
+    return 1.0D;
   }
 
-  @Override
   public double getConvertToPoundRate() {
-    return 0.862935;
+    return 0.862935D;
   }
 }

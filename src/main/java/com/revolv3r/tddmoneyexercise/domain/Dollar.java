@@ -1,44 +1,35 @@
 package com.revolv3r.tddmoneyexercise.domain;
 
-public class Dollar extends MonetaryUnit
-{
-  public Dollar(double aInitVal)
-  {
+public class Dollar extends MonetaryUnit {
+  public Dollar(double aInitVal) {
     super(aInitVal);
   }
 
-  @Override
   public Currency getUnit() {
     return Currency.DOLLAR;
   }
 
-  @Override
   public double getDollarRate() {
-    return 0;
+    return 1.0D;
   }
 
-  @Override
   public double getEuroRate() {
-    return 1.11338;
+    return 1.11338D;
   }
 
-  @Override
   public double getPoundRate() {
-    return 1.28944;
+    return 1.28944D;
   }
 
-  @Override
   public double getConvertToDollarRate() {
-    return 1;
+    return 1.0D;
   }
 
-  @Override
   public double getConvertToEuroRate() {
-    return 0.89663;
+    return 0.89663D;
   }
 
-  @Override
   public double getConvertToPoundRate() {
-    return 0.773825;
+    return 0.773825D;
   }
 }
