@@ -1,9 +1,9 @@
 package com.revolv3r.tddmoneyexercise.domain;
 
 public enum Currency {
-  DOLLAR("Dollars", "USD"),
-  POUND("Pounds", "GBP"),
-  EURO("Euros", "EUR");
+  USD("Dollars", "USD"),
+  GBP("Pounds", "GBP"),
+  EUR("Euros", "EUR");
 
   private String mFriendlyName;
   private String mCurrencyCode;

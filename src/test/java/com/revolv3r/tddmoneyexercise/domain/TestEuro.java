@@ -15,7 +15,7 @@ public class TestEuro extends TestBase
     Euro euro = new Euro(baseValue);
     euro.add(addValue);
 
-    assertEquals(calculateAddConversion(euro, new Euro(addValue), Currency.EURO).getValue(), euro.getValue());
+    assertEquals(calculateAddConversion(euro, new Euro(addValue), Currency.EUR).getValue(), euro.getValue());
     mLogger.info("Total: " + euro);
   }
 
@@ -26,9 +26,9 @@ public class TestEuro extends TestBase
     double addValue = 6.02;
 
     Euro euro = new Euro(baseValue);
-    euro.add(addValue, Currency.POUND);
+    euro.add(addValue, Currency.GBP);
 
-    assertEquals(calculateAddConversion(euro, new Euro(addValue), Currency.POUND).getValue(), euro.getValue());
+    assertEquals(calculateAddConversion(euro, new Euro(addValue), Currency.GBP).getValue(), euro.getValue());
     mLogger.info("Total: " + euro);
   }
 
@@ -39,9 +39,9 @@ public class TestEuro extends TestBase
     double addValue = 6.02;
 
     Euro euro = new Euro(10.66);
-    euro.add(1.47, Currency.DOLLAR);
+    euro.add(1.47, Currency.USD);
 
-    assertEquals(calculateAddConversion(euro, new Euro(addValue), Currency.DOLLAR).getValue(), euro.getValue());
+    assertEquals(calculateAddConversion(euro, new Euro(addValue), Currency.USD).getValue(), euro.getValue());
     mLogger.info("Total: " + euro);
   }
 
@@ -49,13 +49,13 @@ public class TestEuro extends TestBase
   public void convertEuroToPounds()
   {
     Euro euro = new Euro(10.60);
-    assertEquals(9.15, euro.convertToCurrency(Currency.POUND));
+    assertEquals(9.15, euro.convertToCurrency(Currency.GBP));
   }
 
   @Test
   public void convertEurosToDollars()
   {
     Euro euro = new Euro(10.60);
-    assertEquals(11.82, euro.convertToCurrency(Currency.DOLLAR));
+    assertEquals(11.82, euro.convertToCurrency(Currency.USD));
   }
 }

@@ -35,38 +35,38 @@ public abstract class MonetaryUnit {
   }
 
   public double addRate(Currency aUnit) {
-    if (this.getValue() != 0.0D && aUnit != null) {
-      switch(aUnit) {
-      case POUND:
-        return this.getPoundRate();
-      case DOLLAR:
-        return this.getDollarRate();
-      case EURO:
-        return this.getEuroRate();
-      default:
-        return 1.0D;
-      }
-    } else {
+//    if (this.getValue() != 0.0D && aUnit != null) {
+//      switch(aUnit) {
+//      case POUND:
+//        return this.getPoundRate();
+//      case DOLLAR:
+//        return this.getDollarRate();
+//      case EURO:
+//        return this.getEuroRate();
+//      default:
+//        return 1.0D;
+//      }
+//    } else {
       return 1.0D;
-    }
+//    }
   }
 
   public double convertRate(Currency aUnit) {
-    double value = this.getValue();
-    if (value != 0.0D && aUnit != null) {
-      switch(aUnit) {
-      case POUND:
-        return value * this.getConvertToPoundRate();
-      case DOLLAR:
-        return value * this.getConvertToDollarRate();
-      case EURO:
-        return value * this.getConvertToEuroRate();
-      default:
-        return value;
-      }
-    } else {
-      return value;
-    }
+//    double value = this.getValue();
+//    if (value != 0.0D && aUnit != null) {
+//      switch(aUnit) {
+//      case POUND:
+//        return value * this.getConvertToPoundRate();
+//      case DOLLAR:
+//        return value * this.getConvertToDollarRate();
+//      case EURO:
+//        return value * this.getConvertToEuroRate();
+//      default:
+//        return value;
+//      }
+//    } else {
+      return 1d;
+//    }
   }
 
   public void add(double aValue, Currency aUnit) {

@@ -21,23 +21,41 @@
         <h2>Currency Converter</h2>
 
         <div id="table-data" class="convert">
-            <input class="baseValue" id="baseValue" type="number" min=0 step=0.01 onchange="f()" value="0.00">
-            <select id="baseUnit" onchange="f()">
-                <option value="Dollar">(USD) Dollars</option>
+            <input class="baseValue" id="baseValue" type="number" min=0 step=0.01 onchange="convertChosenInput()" value="0.00">
+            <select id="baseUnit" onchange="convertChosenInput()">
+                <!--<option value="Dollar">(USD) Dollars</option>
                 <option value="Euro">(EUR) Euros</option>
-                <option value="Pound" default>(GBP) Pounds</option>
+                <option value="Pound" default>(GBP) Pounds</option>-->
+                <#list quotes as key, value>
+                    <option value="${key}">${key}</option>
+                </#list>
             </select>
 
             <table class="resultTable">
                 <tr>
-                    <td>(USD) Dollars</td>
-                    <td>(EUR) Euros</td>
-                    <td>(GBP) Pounds</td>
+                    <td>To</td>
+                    <td>
+                        <select id="destUnit" onchange="convertChosenInput()">
+                            <!--<option value="Dollar">(USD) Dollars</option>
+                            <option value="Euro">(EUR) Euros</option>
+                            <option value="Pound" default>(GBP) Pounds</option>-->
+                            <#list quotes as key, value>
+                                <option value="${key}">${key}</option>
+                            </#list>
+                        </select>
+                    </td>
+                    <td></td>
                 </tr>
                 <tr>
-                    <td><input class="dollarValue" type="text" disabled/></td>
-                    <td><input class="euroValue" type="text" disabled/></td>
-                    <td><input class="poundValue" type="text" disabled/></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                </tr>
+                <tr>
+                    <td>result</td>
+                </tr>
+                <tr>
+                    <td><input class="resultValue" type="text" disabled/></td>
                 </tr>
             </table>
         </div>

@@ -21,7 +21,7 @@ class TestPound extends TestBase
     pound = new Pound(baseValue);
     pound.add(addValue);
 
-    assertEquals(calculateAddConversion(pound, new Pound(addValue), Currency.POUND).getValue(), pound.getValue());
+    assertEquals(calculateAddConversion(pound, new Pound(addValue), Currency.GBP).getValue(), pound.getValue());
     mLogger.info("Total: " + pound);
   }
 
@@ -32,9 +32,9 @@ class TestPound extends TestBase
     double addValue = 1.67;
 
     Pound pound = new Pound(baseValue);
-    pound.add(addValue, Currency.EURO);
+    pound.add(addValue, Currency.EUR);
 
-    assertEquals(calculateAddConversion(pound, new Pound(addValue), Currency.POUND).getValue(), pound.getValue());
+    assertEquals(calculateAddConversion(pound, new Pound(addValue), Currency.GBP).getValue(), pound.getValue());
     mLogger.info("Total: " + pound);
   }
 
@@ -45,9 +45,9 @@ class TestPound extends TestBase
     double addValue = 1.67;
 
     Pound pound = new Pound(baseValue);
-    pound.add(addValue, Currency.DOLLAR);
+    pound.add(addValue, Currency.USD);
 
-    assertEquals(calculateAddConversion(pound, new Pound(addValue), Currency.POUND).getValue(), pound.getValue());
+    assertEquals(calculateAddConversion(pound, new Pound(addValue), Currency.GBP).getValue(), pound.getValue());
     mLogger.info("Total: " + pound);
   }
 
@@ -55,14 +55,14 @@ class TestPound extends TestBase
   public void convertPoundsToEuro()
   {
     Pound pound = new Pound(10.60);
-    assertEquals(12.28, pound.convertToCurrency(Currency.EURO));
+    assertEquals(12.28, pound.convertToCurrency(Currency.EUR));
   }
 
   @Test
   public void convertPoundsToDollars()
   {
     Pound pound = new Pound(10.60);
-    assertEquals(13.67, pound.convertToCurrency(Currency.DOLLAR));
+    assertEquals(13.67, pound.convertToCurrency(Currency.USD));
   }
 
 }

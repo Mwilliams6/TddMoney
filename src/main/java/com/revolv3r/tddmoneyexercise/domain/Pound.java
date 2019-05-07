@@ -6,7 +6,7 @@ public class Pound extends MonetaryUnit {
   }
 
   public Currency getUnit() {
-    return Currency.POUND;
+    return Currency.GBP;
   }
 
   public double getDollarRate() {

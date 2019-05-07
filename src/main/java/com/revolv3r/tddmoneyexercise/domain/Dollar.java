@@ -6,7 +6,7 @@ public class Dollar extends MonetaryUnit {
   }
 
   public Currency getUnit() {
-    return Currency.DOLLAR;
+    return Currency.USD;
   }
 
   public double getDollarRate() {

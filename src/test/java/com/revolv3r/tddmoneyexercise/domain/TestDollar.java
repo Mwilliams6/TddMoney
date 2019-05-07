@@ -15,7 +15,7 @@ public class TestDollar extends TestBase
     Dollar dollar = new Dollar(baseValue);
     dollar.add(addValue);
 
-    assertEquals(calculateAddConversion(dollar, new Dollar(addValue), Currency.DOLLAR).getValue(), dollar.getValue());
+    assertEquals(calculateAddConversion(dollar, new Dollar(addValue), Currency.USD).getValue(), dollar.getValue());
     mLogger.info("Total: " + dollar);
   }
 
@@ -26,9 +26,9 @@ public class TestDollar extends TestBase
     double addValue = 14.60;
 
     Dollar dollar = new Dollar(baseValue);
-    dollar.add(addValue, Currency.POUND);
+    dollar.add(addValue, Currency.GBP);
 
-    assertEquals(calculateAddConversion(dollar, new Pound(addValue), Currency.POUND).getValue(), dollar.getValue());
+    assertEquals(calculateAddConversion(dollar, new Pound(addValue), Currency.GBP).getValue(), dollar.getValue());
     mLogger.info("Total: " + dollar);
   }
 
@@ -39,9 +39,9 @@ public class TestDollar extends TestBase
     double addValue = 14.60;
 
     Dollar dollar = new Dollar(baseValue);
-    dollar.add(addValue, Currency.EURO);
+    dollar.add(addValue, Currency.EUR);
 
-    assertEquals(calculateAddConversion(dollar, new Euro(addValue), Currency.EURO).getValue(), dollar.getValue());
+    assertEquals(calculateAddConversion(dollar, new Euro(addValue), Currency.EUR).getValue(), dollar.getValue());
     mLogger.info("Total: " + dollar);
   }
 
@@ -49,13 +49,13 @@ public class TestDollar extends TestBase
   public void convertDollarsToPounds()
   {
     Dollar dollar = new Dollar(10.60);
-    assertEquals(8.20, dollar.convertToCurrency(Currency.POUND));
+    assertEquals(8.20, dollar.convertToCurrency(Currency.GBP));
   }
 
   @Test
   public void convertDollarsToEuros()
   {
     Dollar dollar = new Dollar(10.60);
-    assertEquals(9.50, dollar.convertToCurrency(Currency.EURO));
+    assertEquals(9.50, dollar.convertToCurrency(Currency.EUR));
   }
 }

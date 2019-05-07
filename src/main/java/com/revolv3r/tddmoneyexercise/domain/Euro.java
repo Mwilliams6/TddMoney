@@ -11,7 +11,7 @@ public class Euro extends MonetaryUnit {
   }
 
   public Currency getUnit() {
-    return Currency.POUND;
+    return Currency.EUR;
   }
 
   public double getDollarRate() {
