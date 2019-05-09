@@ -1,10 +1,9 @@
 package com.revolv3r.tddmoneyexercise.services.interfaces;
 
-import com.revolv3r.tddmoneyexercise.domain.Currency;
-import org.springframework.stereotype.Service;
+import com.revolv3r.tddmoneyexercise.domain.CurrencyIO;
 
 
 public interface CurrencyService
 {
-  double conversionRate(Currency aUnit, Currency aDestUnit);
+  CurrencyIO getConversionRates(String aUnit);
 }

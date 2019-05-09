@@ -11,19 +11,21 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.client.RestTemplate;
 
 import javax.annotation.Resource;
+import java.util.HashMap;
 import java.util.Map;
+import java.util.TreeMap;
 
 @Controller
 public class CurrencyController
 {
-
   @Resource
   private CurrencyService mService;
 
-  public CurrencyController() {
+  public CurrencyController()
+  {
   }
 
-
+  private Map<String, CurrencyIO> mUnitStore = new HashMap<>();
 
   @RequestMapping({"/"})
   public String convert(Model model) {
@@ -37,7 +39,9 @@ public class CurrencyController
     RestTemplate restTemplate = new RestTemplate();
     CurrencyIO currencyQuotes = restTemplate.getForObject("https://api.exchangeratesapi.io/latest?base="+aBaseCurrency, CurrencyIO.class);
 
-    aModel.addAttribute("quotes", currencyQuotes.getRates());
+    Map<String, Double> treeMap = new TreeMap<>(currencyQuotes.getRates());
+
+    aModel.addAttribute("quotes", treeMap);
     aModel.addAttribute("baseCurrency", currencyQuotes.getBase());
     aModel.addAttribute("dateOfRetrieval", currencyQuotes.getDate());
   }
@@ -105,17 +109,23 @@ public class CurrencyController
   @RequestMapping(value = {"/convertChosenInput"}, method = {RequestMethod.GET})
   @ResponseBody public double convertInput(@RequestParam String input, @RequestParam String unit, @RequestParam String destUnit)
   {
-    MonetaryUnit monetaryUnit = null;
     double doubleValue = Double.valueOf(input);
+    double multiplier =1d;
+    CurrencyIO cr;
 
-    Currency currUnit = Currency.valueOf(unit.toUpperCase());
-    Currency currDestUnit = Currency.valueOf(destUnit.toUpperCase());
+    if (!mUnitStore.containsKey(unit))
+    {
+      cr = mService.getConversionRates(unit);
+      mUnitStore.put(unit, cr);
+    }
+    else
+    {
+      cr = mUnitStore.get(unit);
+    }
 
-    double cr = mService.conversionRate(currUnit, currDestUnit);
+    if (cr.getRates().containsKey(destUnit))
+      multiplier = cr.getRates().get(destUnit);
 
-
-    return doubleValue * cr;
+    return doubleValue * multiplier;
   }
-
-
 }

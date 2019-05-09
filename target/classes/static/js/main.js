@@ -4,6 +4,11 @@ function f()
     addInput();
 }
 
+function g()
+{
+    convertChosenInput();
+}
+
 function convertInput()
 {
     var x = document.getElementById("baseValue").value;
@@ -69,6 +74,33 @@ function addInput()
             }
         });
     }
+}
 
 
+function convertChosenInput()
+{
+    var x = document.getElementById("baseValue").value;
+    var y = document.getElementById("baseUnit").value;
+    var z = document.getElementById("destUnit").value;
+
+    $('.baseValue').val(parseFloat(x).toFixed(2));
+
+    $.ajax({
+        type: "GET",
+        url: "convertChosenInput",
+        data: {
+            input:x,
+            unit:y,
+            destUnit:z
+        },
+        success: function (data)
+        {
+            $('.resultValue').val('$'+data.toFixed(2));
+
+            console.log("SUCCESS : ", data);
+        },
+        error: function (err) {
+            $('.resultValue').val('ERR');
+        }
+    });
 }

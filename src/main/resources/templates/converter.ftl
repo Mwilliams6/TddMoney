@@ -23,45 +23,25 @@
         <div id="table-data" class="convert">
             <input class="baseValue" id="baseValue" type="number" min=0 step=0.01 onchange="convertChosenInput()" value="0.00">
             <select id="baseUnit" onchange="convertChosenInput()">
-                <!--<option value="Dollar">(USD) Dollars</option>
-                <option value="Euro">(EUR) Euros</option>
-                <option value="Pound" default>(GBP) Pounds</option>-->
                 <#list quotes as key, value>
                     <option value="${key}">${key}</option>
                 </#list>
             </select>
 
-            <table class="resultTable">
-                <tr>
-                    <td>To</td>
-                    <td>
-                        <select id="destUnit" onchange="convertChosenInput()">
-                            <!--<option value="Dollar">(USD) Dollars</option>
-                            <option value="Euro">(EUR) Euros</option>
-                            <option value="Pound" default>(GBP) Pounds</option>-->
-                            <#list quotes as key, value>
-                                <option value="${key}">${key}</option>
-                            </#list>
-                        </select>
-                    </td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td></td>
-                    <td></td>
-                </tr>
-                <tr>
-                    <td>result</td>
-                </tr>
-                <tr>
-                    <td><input class="resultValue" type="text" disabled/></td>
-                </tr>
-            </table>
         </div>
+        <div class="spacerArrow">
 
+        </div>
+        <div id="table-data" class="convert">
+            <select id="destUnit" onchange="convertChosenInput()">
+                <#list quotes as key, value>
+                    <option value="${key}">${key}</option>
+                </#list>
+            </select>
+            <input class="resultValue" type="text" disabled/>
+        </div>
         <br/>
-        <h3>Add Another Currency Value</h3>
+        <br/>
         <div id="table-data" class="adding">
             <input class="addValue" id="addValue" type="number" min=0 step=0.01 onchange="f()" value="0.00">
             <select id="addUnit" onchange="f()">

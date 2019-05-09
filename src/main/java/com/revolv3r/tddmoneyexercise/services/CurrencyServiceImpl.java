@@ -15,18 +15,14 @@ import java.net.URL;
 @Service
 public class CurrencyServiceImpl implements CurrencyService
 {
-
   @Override
-  public double conversionRate(Currency aUnit, Currency aDestUnit)
+  public CurrencyIO getConversionRates(String aUnit)
   {
     RestTemplate restTemplate = new RestTemplate();
     CurrencyIO currencyQuotes = restTemplate.getForObject(
-            "https://api.exchangeratesapi.io/latest?base="+aUnit.getCurrencyCode(),
+            "https://api.exchangeratesapi.io/latest?base="+aUnit,
             CurrencyIO.class);
 
-    if (currencyQuotes.getRates().containsKey(aDestUnit.getCurrencyCode()))
-      return currencyQuotes.getRates().get(aDestUnit.getCurrencyCode());
-
-    return 0;
+    return currencyQuotes;
   }
 }
